@@ -13,22 +13,24 @@ stages {
 stage('init') {
 steps {
 echo "start smoke test"
-}
-}
-}
+
 println "loading CustomParameters"
-					customParams.each{
-						println it
-						if(it!=null || !it.toString().isEmpty()) {
-							ArrayList jobParam = it.toString().trim().split("=")
-							println jobParam.size();
-							if(jobParam.size()==2) {
-								parameterMap.put(jobParam[0], jobParam[1])
-							}
-							else {
-								errorList.add(customParamErrorMessage)
-							}
-						}
-					}
+customParams.each{
+println it
+if(it!=null || !it.toString().isEmpty()) {
+ArrayList jobParam = it.toString().trim().split("=")
+println jobParam.size();
+if(jobParam.size()==2) {
+parameterMap.put(jobParam[0], jobParam[1])
+}
+else {
+errorList.add(customParamErrorMessage)
+}
+}
+}
+}
+}
+}
+
 }
 
