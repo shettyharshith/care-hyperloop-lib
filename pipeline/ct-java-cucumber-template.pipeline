@@ -6,6 +6,7 @@ import hudson.FilePath
 import org.apache.commons.lang3.text.StrSubstitutor
 @Field def customParamErrorMessage="Ajex Validation-User must specify custom parameters as comma separated key value pairs, like key1=value1,key2=value2***"
 def customParams = CustomParameters.split(",")
+@Field def Map<String,String> parameterMap = new HashMap<String, String>()
 
 pipeline {
 agent any
