@@ -4,27 +4,17 @@ import groovy.transform.Synchronized
 import groovy.json.JsonSlurperClassic
 import hudson.FilePath
 import org.apache.commons.lang3.text.StrSubstitutor
-pipeline{
-agent any
-stages 
-{
-stage('Build') 
-{
-steps{
-echo "Building the Project.........."
-}
-}
-stage('Test') 
-{
-steps{
-echo "Testing the Project.........."
-}
-}
-stage('Deploy') 
-{
-steps{
-echo "Deploying the Project.........."
-}
-}
-}
-}
+pipeline {
+	agent { label pipeLineConstants.JENKINS_EXECUTOR }
+	stages {
+		stage (Init){
+
+			steps {
+				script{
+					pipeLineStages.initStage(this,params)
+				}
+			}
+
+		}
+    }
+    }
