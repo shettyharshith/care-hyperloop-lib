@@ -1,3 +1,4 @@
+/** 
 def smokeStage(def caller) {
 
 	switch(true) {
@@ -24,3 +25,4 @@ def smokeStage(def caller) {
 		}
 	}
 }
+*/
