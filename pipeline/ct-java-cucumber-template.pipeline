@@ -1,4 +1,9 @@
 @Library(['care-hyperloop-prac-shared-library@pf_develop']) _
+import groovy.transform.Field
+import groovy.transform.Synchronized
+import groovy.json.JsonSlurperClassic
+import hudson.FilePath
+import org.apache.commons.lang3.text.StrSubstitutor
 pipeline{
 agent any
 stages 
