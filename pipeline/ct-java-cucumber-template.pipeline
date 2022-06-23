@@ -1,0 +1,19 @@
+@Library(['care-hyperloop-prac-shared-library']) _
+import groovy.transform.Field
+import groovy.transform.Synchronized
+import groovy.json.JsonSlurperClassic
+import hudson.FilePath
+import org.apache.commons.lang3.text.StrSubstitutor
+@Field def nullKeyErrorMessage="AJEX-Validation YML Error: YML file must have valued key and value pair"
+*@author harshith
+pipeline {
+agent any {label "${LABEL_NAME}"}
+stages {
+stage('init') {
+echo "print the line mentioned"
+}
+stage('smoke'){
+echo "run smoke test"
+}
+}
+}
