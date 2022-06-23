@@ -5,16 +5,12 @@ import groovy.json.JsonSlurperClassic
 import hudson.FilePath
 import org.apache.commons.lang3.text.StrSubstitutor
 pipeline {
-	agent { label pipeLineConstants.JENKINS_EXECUTOR }
-	stages {
-		stage (Init){
-
-			steps {
-				script{
-					pipeLineStages.initStage(this,params)
-				}
-			}
-
-		}
-    }
-    }
+agent any
+stages {
+stage('init') {
+steps {
+echo "start smoke test"
+}
+}
+}
+}
