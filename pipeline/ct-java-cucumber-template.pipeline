@@ -4,6 +4,9 @@ import groovy.transform.Synchronized
 import groovy.json.JsonSlurperClassic
 import hudson.FilePath
 import org.apache.commons.lang3.text.StrSubstitutor
+@Field def customParamErrorMessage="Ajex Validation-User must specify custom parameters as comma separated key value pairs, like key1=value1,key2=value2***"
+def customParams = CustomParameters.split(",")
+
 pipeline {
 agent any
 stages {
@@ -13,4 +16,19 @@ echo "start smoke test"
 }
 }
 }
+println "loading CustomParameters"
+					customParams.each{
+						println it
+						if(it!=null || !it.toString().isEmpty()) {
+							ArrayList jobParam = it.toString().trim().split("=")
+							println jobParam.size();
+							if(jobParam.size()==2) {
+								parameterMap.put(jobParam[0], jobParam[1])
+							}
+							else {
+								errorList.add(customParamErrorMessage)
+							}
+						}
+					}
 }
+
