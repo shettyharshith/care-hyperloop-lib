@@ -12,9 +12,10 @@ agent any
 stages {
 stage('init') {
 steps {
+script {
 echo "start smoke test"
 println "loading CustomParameters"
-  customParams.each{
+  customParams.each {
   println it
   if(it!=null || !it.toString().isEmpty()) {
   ArrayList jobParam = it.toString().trim().split("=")
@@ -24,6 +25,7 @@ println "loading CustomParameters"
 }
 else {
 errorList.add(customParamErrorMessage)
+}
 }
 }
 }
